@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<div class="card card-container">
+<p>
+  <strong>Category:</strong>
+  <%= @donation.category %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @donation.quantity %>
+</p>
+
+<p>
+  <strong>Organization:</strong>
+  <%= @donation.organization.name %>
+</p>
+
+<% if can? :update, @organization %>
+<%= link_to 'Edit', edit_donation_path(@donation), :class => "btn btn-raised btn-primary" %> |
+<% end %>
+<%= link_to 'Back', donations_path, :class => "btn btn-raised btn-warning" %>
+</div>

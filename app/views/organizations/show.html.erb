@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= image_tag(@organization.picture) if @organization.picture? %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @organization.name %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @organization.category %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @organization.year %>
+</p>
+<strong>Contact:</strong>
+  <%= @organization.contact_number %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @organization.description %>
+</p>
+<% if can? :update, @organization %>
+<%= link_to 'Edit', edit_organization_path(@organization), :class => "btn btn-raised btn-info" %> |
+<% end %>
+<%= link_to 'Back', organizations_path, :class => "btn btn-raised btn-warning" %>

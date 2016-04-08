@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Organizations List</h1>
+
+<table  class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>Picture</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Year</th>
+      <th>Contact</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @organizations.each do |organization| %>
+      <tr>
+        <td><%= image_tag(organization.picture, size:"80x80") if organization.picture?%></td>
+        <td><%= organization.name %></td>
+        <td><%= organization.category %></td>
+        <td><%= organization.year %></td>
+        <td><%= organization.contact_number %></td>
+        <td><%= organization.description %></td>
+        
+        <td><%= link_to 'Show', organization,:class => "btn btn-raised btn-primary" %></td>
+        
+        <% if can? :update, organization %>
+        <td><%= link_to 'Edit', edit_organization_path(organization),:class => "btn btn-raised btn-warning" %></td>
+        <% end %>
+         
+         <% if can? :destroy, organization %>
+        <td><%= button_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-raised btn-danger" %></td>
+        <% end %>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if can? :create, @organization %>
+<%= link_to 'New Organization', new_organization_path, :class => "btn btn-raised btn-primary" %>
+<% end %>
